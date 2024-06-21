@@ -7,7 +7,6 @@ function fetchContacts() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       displayOutput(data);
     });
 }
