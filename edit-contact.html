@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Book | Edit Contact</title>
   </head>
-  <body>
+  <body onload="getContact()">
+    <div id="avatarImage"></div>
     <div>
       <form id="editForm">
         <label for="firstname">First Name</label>
@@ -30,5 +31,8 @@
       <button id="editContact" type="button">Edit</button>
       <button id="deleteContact" type="button">Delete</button>
     </div>
+
+    <script src="config.js"></script>
+    <script src="edit.js"></script>
   </body>
 </html>
