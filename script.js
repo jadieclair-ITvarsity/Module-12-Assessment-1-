@@ -1,6 +1,8 @@
+// Add event listeners for the refresh button and the add contact button
 document.getElementById("refresh").addEventListener("click", fetchContacts);
 document.getElementById("addContact").addEventListener("click", addContact);
 
+// Function to fetch all contacts from the server
 function fetchContacts() {
   fetch(rootPath + "controller/get-contacts/")
     .then(function (response) {
@@ -11,6 +13,7 @@ function fetchContacts() {
     });
 }
 
+// Function to display the fetched contacts in a table
 function displayOutput(data) {
   let output = "<table>";
   for (i in data) {
@@ -27,10 +30,12 @@ function displayOutput(data) {
   document.getElementById("table").innerHTML = output;
 }
 
+// Function to navigate to the add contact page
 function addContact() {
   window.open("add-contact.html", "_self");
 }
 
+// Function to navigate to the edit contact page for a specific contact
 function editContact(id) {
   window.open("edit-contact.html?id=" + id, "_self");
 }

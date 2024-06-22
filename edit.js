@@ -1,3 +1,4 @@
+// Add event listeners for various buttons and links on the page
 document.getElementById("homeLink").addEventListener("click", homeLink);
 document.getElementById("editContact").addEventListener("click", editContact);
 document.getElementById("submitForm").addEventListener("click", submitForm);
@@ -5,8 +6,10 @@ document
   .getElementById("deleteContact")
   .addEventListener("click", deleteContact);
 
+// Retrieve the contact ID from the URL
 const id = getId();
 
+// Function to extract ID from the URL
 function getId() {
   const url = window.location.href;
   const pos = url.search("=");
@@ -14,6 +17,7 @@ function getId() {
   return id;
 }
 
+// Function to fetch contact details from the server
 function getContact() {
   fetch(rootPath + "controller/get-contacts/?id=" + id)
     .then(function (response) {
@@ -24,10 +28,12 @@ function getContact() {
     });
 }
 
+// Function to navigate to the home page
 function homeLink() {
   window.open("index.html", "_self");
 }
 
+// Function to display contact details on the page
 function displayOutput(data) {
   let avatarImg = `
   <img src="${rootPath}/controller/uploads/${data[0].avatar}" width="200" />
@@ -39,8 +45,7 @@ function displayOutput(data) {
   document.getElementById("email").value = data[0].email;
 }
 
-// Set form element readonly to false
-
+// Function to enable form fields for editing
 function editContact() {
   document.getElementById("firstname").readOnly = false;
   document.getElementById("lastname").readOnly = false;
@@ -50,6 +55,7 @@ function editContact() {
   document.getElementById("submitForm").hidden = false;
 }
 
+// Function to handle form submission for editing contact details
 function submitForm(e) {
   e.preventDefault();
   const form = new FormData(document.querySelector("#editForm"));
@@ -75,6 +81,7 @@ function submitForm(e) {
     });
 }
 
+// Function to handle contact deletion
 function deleteContact() {
   const confirmDelete = confirm("Delete contact. Are you sure?");
 
